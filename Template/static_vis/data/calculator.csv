@@ -1,0 +1,14 @@
+Message,Count
+&apos;if&apos; construct must use &apos;{}&apos;s.,11
+Each variable declaration must be in its own statement.,2
+File does not end with a newline.,1
+Hides a field,1
+Line has trailing spaces.,6
+Line is longer than 80 characters,14
+Method Calculator length is 362 lines (max allowed is 150).,1
+Parameter should be final.,13
+Redundant import from the java.lang package - java.lang.Math.,1
+Unused import,1
+Using form of import should be avoided,1
+magic number.,44
+switch without &quot;default&quot; clause.,2
