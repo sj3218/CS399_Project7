@@ -7,15 +7,11 @@ be animated/updated etc. Typically, you will put things here that are not depend
 // define margins in pixels. Use these to define total space allotted for this chart, within the chart area.
 // For multiple charts, you can define multiple margin arrays
 var margins = { left:100, right:40, top:50, bottom:150};
-var codeMargins = { left:50, right:400, top:50, bottom:-50};
 var t = d3.transition().duration(1000);
 
 //define chart sizes
 var width = 900 - margins.left - margins.right;
 var height = 400 - margins.top - margins.bottom;
-
-var codeWidth = 30// - codeMargins.left - codeMargins.right;
-var codeHeight = 40// - codeMargins.top - codeMargins.bottom;
 
 var g = d3.select("#chart-area")
     .append("svg")
@@ -40,22 +36,6 @@ g.append("text")
     .attr("text-anchor", "middle")
     .attr("transform", "rotate(-90)")
     .text("Count");
-
-var code = d3.select("#code-area")
-    .append("svg")
-    .attr("width", codeWidth + codeMargins.left + codeMargins.right)
-    .attr("height", codeHeight + codeMargins.top + codeMargins.bottom)
-    .append("g")
-    .attr("transform", "translate(" + codeMargins.left + ", " + codeMargins.top  + ")");
-
-code.append("text")
-    .attr("class", "x axis-label")
-    .attr("x", codeWidth) //centered
-    .attr("y", codeHeight + (codeMargins.bottom))
-    .attr("font-size", "14px")
-    .attr("text-anchor", "middle")
-    .text("Code Example");
-
 
 
 d3.csv("data/brickbreaker_modified.csv").then(function(data){
