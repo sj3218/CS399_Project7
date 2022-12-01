@@ -1,8 +1,8 @@
-const imageString = ["img/magicNumber.PNG","img/","img/finalParameters.PNG",
-"img/whitespaceAround.PNG","img/","img/lineLength.PNG",
-"img/avoidStarImport.PNG","img/","img/",
-"img/","img/unusedImports.PNG","img/innerAssignment.PNG",
-"img/hiddenField.PNG","img/multipleVariableDeclarations.PNG","img/","img/emptyStatement.PNG"];
+const imageString = ["img/magicNumber.PNG","img/whitespaceAround_and_whitespaceAround.PNG","img/finalParameters.PNG",
+"img/whitespaceAround.PNG","img/visibilityModifier.PNG","img/lineLength.PNG",
+"img/avoidStarImport.PNG","img/rightCurly_and_leftCurly.PNG","img/typeName.PNG",
+"img/newlineAtEndOfFile.PNG","img/unusedImports.PNG","img/innerAssignment.PNG",
+"img/hiddenField.PNG","img/multipleVariableDeclarations.PNG","img/interfactIsType.PNG","img/emptyStatement.PNG"];
 
 var margins = { left:20, right:70, top:80, bottom:150};
 
@@ -18,20 +18,20 @@ var svg = d3.select("#chart-area")
     .append('g')
     .attr("transform", "translate(" + 270  + "," + height / 2 + ")");
 
-var tooltip = d3.select("#chart-area")
+var tooltip = d3.select("#tooltip")
     .append("div")
     .style("opacity", 0)
+    .attr("class", "tooltip")
     .style("background-color", "black")
     .style("border-radius", "5px")
-    .style("padding", "10px")
+    .style("padding", "20px")
+    .style("font-size", "20px")
     .style("color", "white");
 
-var img = d3.select("#chart-area")
-    .append("svg")
-    .attr("width", width)
-    .attr("height", height)
-    .append('g')
-    .attr("transform", "translate(" + 850  + "," + height / 2 + ")");
+var img = d3.select("#image_tooltip")
+    .append("div")
+    .style("opacity", 0)
+    .attr("class", "tooltip");
 
 var pie = d3.pie()
       .value(function(d) {return d.Count; });
@@ -60,8 +60,8 @@ var showToolTip = function(d)
     
     tooltip
         .style("opacity", 1)
-        .style("left", d3.event.pageX + "px")
-        .style("top", d3.event.pageY + "px");
+        .style("left", 1000 + "px")
+        .style("top", 100 + "px");
 
     tooltip
         .html("Message: " + msg + "<br>Count: " + d.data.Count);
@@ -69,12 +69,13 @@ var showToolTip = function(d)
     img.transition()
         .duration(200)
 
-    var string = "<img src= img/avoidStarImport.PNG />";
-    var a = "<img src= " + imageString[d.index] + " />";
+    var string = "<img src= " + imageString[d.index] + " />";
     img.html(string)
-        .style("opacity", 1);
+        .style("opacity", 1)
+        .style("left", 1000 +"px")
+        .style("top", (height / 2 - 110) + "px");
 
-    console.log(d3.event.pageX);
+    //console.log(d3.event.pageX);
 };
 
 var hideToolTip = function(d)
@@ -90,8 +91,8 @@ var hideToolTip = function(d)
 
 var moveToolTip = function(d)
 {
-    tooltip.style("left", d3.event.pageX + "px")
-        .style("top", d3.event.pageY + "px");
+    // tooltip.style("left", (d3.event.pageX + 30) + "px")
+    //     .style("top", (d3.event.pageY + 30) + "px");
 }
 
 var dataContainer;
