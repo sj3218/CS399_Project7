@@ -1,11 +1,11 @@
 Message,Count
-Empty statement.,1
+Empty Statement,1
+Interface Is Type,1
 Multiple Variable Declarations,1
-interfaces should describe a type and hence have methods.,1
-Hides a field,2
+Hidden Field,2
 Inner Assignment,3
-Unused import,5
-Newline At End OfFile,6
+Unused Import,5
+Newline At End Of File,6
 Type Name,10
 Left Curly + Right Curly,13
 Avoid Star Import,14
