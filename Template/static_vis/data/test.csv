@@ -1,0 +1,17 @@
+Message,Count
+Empty Statement,1
+Interface Is Type,1
+Multiple Variable Declarations,1
+Hidden Field,2
+Inner Assignment,3
+Unused Import,5
+Newline At End Of File,6
+Type Name,10
+Left Curly + Right Curly,13
+Avoid Star Import,14
+Line Length,23
+Visibility Modifier,28
+Whitespace Around,38
+Final Parameters,46
+Whitespace Around + Whitespace After,47
+Magic Number,108
