@@ -1,7 +1,12 @@
+const imageString = ["img/magicNumber.PNG","img/whitespaceAround_and_whitespaceAround.PNG","img/finalParameters.PNG",
+"img/whitespaceAround.PNG","img/visibilityModifier.PNG","img/lineLength.PNG",
+"img/avoidStarImport.PNG","img/rightCurly_and_leftCurly.PNG","img/typeName.PNG",
+"img/newlineAtEndOfFile.PNG","img/unusedImports.PNG","img/innerAssignment.PNG",
+"img/hiddenField.PNG","img/multipleVariableDeclarations.PNG","img/interfactIsType.PNG","img/emptyStatement.PNG"];
 
-var margins = { left:50, right:100, top:80, bottom:150};
+var margins = { left:20, right:70, top:80, bottom:150};
 
-var width = 1000 - margins.left - margins.right;
+var width = 1200 - margins.left - margins.right;
 var height = 900 - margins.top - margins.bottom;
 
 var radius = Math.min(width, height) / 2 - 40;
@@ -11,15 +16,22 @@ var svg = d3.select("#chart-area")
     .attr("width", width)
     .attr("height", height)
     .append('g')
-    .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
+    .attr("transform", "translate(" + 270  + "," + height / 2 + ")");
 
-var tooltip = d3.select("#chart-area")
+var tooltip = d3.select("#tooltip")
     .append("div")
     .style("opacity", 0)
+    .attr("class", "tooltip")
     .style("background-color", "black")
     .style("border-radius", "5px")
-    .style("padding", "10px")
+    .style("padding", "20px")
+    .style("font-size", "20px")
     .style("color", "white");
+
+var img = d3.select("#image_tooltip")
+    .append("div")
+    .style("opacity", 0)
+    .attr("class", "tooltip");
 
 var pie = d3.pie()
       .value(function(d) {return d.Count; });
@@ -41,29 +53,44 @@ var overArc = d3.arc()
 var showToolTip = function(d)
 {
     var msg = d.data.Message;
-    console.log(msg);
+    //console.log(msg);
 
     tooltip.transition()
         .duration(200);
     
     tooltip
         .style("opacity", 1)
-        .html("Message: " + msg)
-        .style("left", d3.event.pageX + "px")
-        .style("top", d3.event.pageY + "px");
+        .style("left", 1000 + "px")
+        .style("top", 110 + "px");
+
+    tooltip
+        .html("Message: " + msg + "<br>Count: " + d.data.Count);
+
+    img.transition()
+        .duration(200)
+
+    var string = "<img src= " + imageString[d.index] + " />";
+    img.html(string)
+        .style("opacity", 1)
+        .style("left", 1000 +"px")
+        .style("top", (height / 2 - 110) + "px");
+
+    //console.log(d3.event.pageX);
 };
 
 var hideToolTip = function(d)
 {
-    tooltip.transition()
-        .duration(200)
+    tooltip
+        .style("opacity", 0);
+
+    img
         .style("opacity", 0);
 }
 
 var moveToolTip = function(d)
 {
-    tooltip.style("left", d3.event.pageX + "px")
-        .style("top", d3.event.pageY + "px");
+    // tooltip.style("left", (d3.event.pageX + 30) + "px")
+    //     .style("top", (d3.event.pageY + 30) + "px");
 }
 
 var dataContainer;
@@ -103,7 +130,7 @@ function UpdatePieChart(data)
                 .duration(200)
                 .attr("d", overArc)
                 .attr("stroke-width", 1);
-
+            
             //show tooltip
             showToolTip(d);
         })
@@ -120,46 +147,6 @@ function UpdatePieChart(data)
         });
 
 
-    /*
-    //line
-    svg
-        .selectAll('allPolylines')
-        .data(pie(data))
-        .enter()
-        .append('polyline')
-        .attr("stroke", "black")
-        .style("fill", "none")
-        .attr("stroke-width", 1)
-        .attr('points', function(d) {
-            var posA = arc.centroid(d); 
-            var posB = outerArc.centroid(d);
-            var posC = outerArc.centroid(d); 
-            var midangle = d.startAngle + (d.endAngle - d.startAngle) / 2;
-            posC[0] = radius * 0.95 * (midangle < Math.PI ? 1 : -1);
-            return [posA, posB, posC];
-            })
-            
-            */
-/*
-    // text
-    svg
-        .selectAll('allLabels')
-        .data(pie(data))
-        .enter()
-        .append('text')
-            .text( function(d) { return d.data.Message; } )
-            .attr('transform', function(d) {
-                var pos = outerArc.centroid(d);
-                var midangle = d.startAngle + (d.endAngle - d.startAngle) / 2
-                pos[0] = radius * 0.99 * (midangle < Math.PI ? 1 : -1);
-                return 'translate(' + pos + ')';
-            })
-        .style('text-anchor', function(d) {
-            var midangle = d.startAngle + (d.endAngle - d.startAngle) / 2
-            return (midangle < Math.PI ? 'start' : 'end')
-    });
-
-    */
 }
 
 

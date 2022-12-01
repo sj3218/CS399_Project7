@@ -78,14 +78,14 @@ void Parsing::ParsingTextFile(std::string file_path)
     std::string preceded_with_whitespace = "Whitespace Around";
 
     std::string delim_hides = "hides a field";
-    std::string hides_field = "Hides a field";
+    std::string hides_field = "Hidden Field";
 
     std::string delim_multi_block = "multi-block statement";
     std::string multi_block = "Should be on the same line as the next part of a multi-block statement";
 
     std::string delim_multiple_valiable_declation = "Each variable declaration must be in its own ";
-
-
+    std::string delim_interface_type = "interfaces should describe a type and hence have methods";
+    std::string delim_empty_statements = "Empty statement";
     std::string token;
     
     while (!file.eof())
@@ -103,6 +103,14 @@ void Parsing::ParsingTextFile(std::string file_path)
         {
             token = "Magic Number";
         }
+        else if (token.find(delim_interface_type) != std::string::npos)
+        {
+            token = "Interface Is Type";
+        }
+        else if (token.find(delim_empty_statements) != std::string::npos)
+        {
+            token = "Empty Statement";
+        }
         else if (token.find(delim_multiple_valiable_declation) != std::string::npos)
         {
             token = "Multiple Variable Declarations";
@@ -113,7 +121,7 @@ void Parsing::ParsingTextFile(std::string file_path)
         }
         else if (token.find(delim_file_new_line) != std::string::npos)
         {
-            token = "Newline At End OfFile";
+            token = "Newline At End Of File";
         }
         else if (token.find("Inner assignments should be avoided") != std::string::npos)
         {
@@ -149,7 +157,7 @@ void Parsing::ParsingTextFile(std::string file_path)
         }
         else if (token.find(delim_unused_import) != std::string::npos)
         {
-            token = delim_unused_import;
+            token = "Unused Import";
         }
         else if (token.find(delim_name_match) != std::string::npos)
         {
