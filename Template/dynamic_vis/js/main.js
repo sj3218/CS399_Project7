@@ -61,7 +61,7 @@ var showToolTip = function(d)
     tooltip
         .style("opacity", 1)
         .style("left", 1000 + "px")
-        .style("top", 100 + "px");
+        .style("top", 110 + "px");
 
     tooltip
         .html("Message: " + msg + "<br>Count: " + d.data.Count);
@@ -80,12 +80,10 @@ var showToolTip = function(d)
 
 var hideToolTip = function(d)
 {
-    tooltip.transition()
-        .duration(200)
+    tooltip
         .style("opacity", 0);
 
-    img.transition()
-        .duration(200)
+    img
         .style("opacity", 0);
 }
 
