@@ -15,8 +15,7 @@ public:
 
 private:
     void ParsingTextFile(std::string file_path);
-
-
+    
 private:
     std::string m_file_path_name;
 

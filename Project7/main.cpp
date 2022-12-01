@@ -3,10 +3,10 @@
 
 int main()
 {
-    Parsing calculator("calculator.txt");
+    //Parsing calculator("calculator.txt");
     Parsing brickbreaker("brickbreaker.txt");
 
-    calculator.WriteDataOnCSVFile();
+    //calculator.WriteDataOnCSVFile();
     brickbreaker.WriteDataOnCSVFile();
 
 }

@@ -1,0 +1,8 @@
+Message,Count
+File does not end with a newline.,1
+Each variable declaration must be in its own statement.,2
+Line has trailing spaces.,6
+&apos;if&apos; construct must use &apos;{}&apos;s.,11
+Parameter should be final.,13
+Line is longer than 80 characters,14
+magic number.,44
