@@ -6,7 +6,8 @@ be animated/updated etc. Typically, you will put things here that are not depend
 
 // define margins in pixels. Use these to define total space allotted for this chart, within the chart area.
 // For multiple charts, you can define multiple margin arrays
-var margins = { left:100, right:40, top:50, bottom:150};
+
+var margins = { left:50, right:40, top:50, bottom:150};
 var t = d3.transition().duration(1000);
 
 //define chart sizes
@@ -23,8 +24,8 @@ var g = d3.select("#chart-area")
 g.append("text")
     .attr("class", "x axis-label")
     .attr("x", width / 2) //centered
-    .attr("y", height + (margins.bottom / 2))
-    .attr("font-size", "12px")
+    .attr("y", height + (margins.bottom / 2) + 50)
+    .attr("font-size", "20px")
     .attr("text-anchor", "middle")
     .text("Code Smell Type");
 
@@ -38,8 +39,7 @@ g.append("text")
     .text("Count");
 
 
-d3.csv("data/brickbreaker_modified.csv").then(function(data){
-
+d3.csv("data/test.csv").then(function(data){
     data.forEach(function(d){
         d.Count = +d.Count;
     });
@@ -77,6 +77,8 @@ d3.csv("data/brickbreaker_modified.csv").then(function(data){
     var myColor = d3.scaleSequential()
         .interpolator(d3.interpolateViridis)
         .domain([-15, 100])
+    
+    //var image = document.getElementById("image").src;
 
     var Tooltip = d3.select("#div_template")
         .append("div")
@@ -87,27 +89,57 @@ d3.csv("data/brickbreaker_modified.csv").then(function(data){
         .style("border-width", "2px")
         .style("border-radius", "5px")
         .style("padding", "5px")
+
+    var imageTooltip = d3.select("#image_template")
+        .append("div")
+        .style("opacity", 0)
+        .attr("class", "tooltip")
+        .style("background-color", "white")
+        .style("border", "solid")
+        .style("border-width", "2px")
+        .style("border-radius", "5px")
+        .style("padding", "5px")
     
-      var mouseover = function(d) {
+    var mouseover = function(d) {
         Tooltip
           .style("opacity", 1)
         d3.select(this)
           .style("stroke", "black")
           .style("opacity", 1)
+
+        imageTooltip
+          .style("opacity", 1)
+        d3.select(this)
+          .style("stroke", "black")
+          .style("opacity", 1)
       }
+
       var mousemove = function(d) {
         Tooltip
-          .html("Code smell type: " + d.Message)
-          .style("left", (d3.mouse(this)[0]+70) + "px")
+          .html("Count: " + d.Count)
+          .style("left", (d3.mouse(this)[0] + 75) + "px")
           .style("top", (d3.mouse(this)[1]) + "px")
-          console.log("on the rect")
+        
+          var string = "<img src= img/avoidStarImport.PNG />";
+          imageTooltip
+          .html(string)
+          .style("left", 100 + "px")
+          .style("top", 500 + "px");
       }
+
       var mouseleave = function(d) {
         Tooltip
           .style("opacity", 0)
         d3.select(this)
           .style("stroke", "none")
           .style("opacity", 0.8)
+
+        imageTooltip
+          .style("opacity", 0)
+        d3.select(this)
+          .style("stroke", "none")
+          .style("opacity", 0.8)
+
       }
 
     var rects = g.selectAll("rect")
