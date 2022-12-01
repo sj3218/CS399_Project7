@@ -1,4 +1,4 @@
-const imageString = ["img/magicNumber.PNG","img/whitespaceAround_and_whitespaceAround.PNG","img/finalParameters.PNG",
+const imageString = ["img/magicNumber.PNG","img/whitespaceAround_and_whitespaceAfter.png","img/finalParameters.PNG",
 "img/whitespaceAround.PNG","img/visibilityModifier.PNG","img/lineLength.PNG",
 "img/avoidStarImport.PNG","img/rightCurly_and_leftCurly.PNG","img/typeName.PNG",
 "img/newlineAtEndOfFile.PNG","img/unusedImports.PNG","img/innerAssignment.PNG",
