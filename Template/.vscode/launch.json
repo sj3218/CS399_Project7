@@ -9,7 +9,7 @@
             "type": "chrome",
             "request": "launch",
             "name": "Project7",
-            "url": "http://localhost:8000/dynamic_vis/index.html",
+            "url": "http://localhost:8000/static_vis/index.html",
             "webRoot": "${workspaceFolder}"
         }
     ]
