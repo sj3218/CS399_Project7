@@ -1,19 +1,17 @@
 Message,Count
-&apos;{&apos; at column 1 should be on the previous line.,2
-&apos;{&apos; at column 63 should have line break after.,1
-Each variable declaration must be in its own statement.,1
-Empty statement.,1
-File does not end with a newline.,6
-Hides a field,2
-Inner assignments should be avoided.,3
-Line is longer than 80 characters,23
-Name must match pattern,10
-Not followed by whitespace,47
-Not preceded with whitespace,38
-Parameter should be final.,46
-Should be on the same line as the next part of a multi-block statement,10
-Unused import,5
-Using form of import should be avoided,14
-Variable must be private and have accessor methods.,28
-interfaces should describe a type and hence have methods.,1
-magic number.,108
+Empty Statement,1
+Interface Is Type,1
+Multiple Variable Declarations,1
+Hidden Field,2
+Inner Assignment,3
+Unused Import,5
+Newline At End Of File,6
+Type Name,10
+Left Curly + Right Curly,13
+Avoid Star Import,14
+Line Length,23
+Visibility Modifier,28
+Whitespace Around,38
+Final Parameters,46
+Whitespace Around + Whitespace After,47
+Magic Number,108

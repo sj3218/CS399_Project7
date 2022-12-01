@@ -17,11 +17,11 @@ function draw(ID)
     d3.select("#pie-area").selectAll("*").remove();
     d3.select("#chart-area").selectAll("*").remove();
 
-    const imageString = ["img/magicNumber.PNG","img/whitespaceAround_and_whitespaceAfter.png","img/finalParameters.PNG",
-    "img/whitespaceAround.PNG","img/visibilityModifier.PNG","img/lineLength.PNG",
-    "img/avoidStarImport.PNG","img/rightCurly_and_leftCurly.PNG","img/typeName.PNG",
-    "img/newlineAtEndOfFile.PNG","img/unusedImports.PNG","img/innerAssignment.PNG",
-    "img/hiddenField.PNG","img/multipleVariableDeclarations.PNG","img/interfactIsType.PNG","img/emptyStatement.PNG"];
+    const imageString = ["img_2/magicNumber.PNG","img_2/whitespaceAround_and_whitespaceAfter.png","img_2/finalParameters.PNG",
+    "img_2/whitespaceAround.PNG","img_2/visibilityModifier.PNG","img_2/lineLength.PNG",
+    "img_2/avoidStarImport.PNG","img_2/rightCurly_and_leftCurly.PNG","img_2/typeName.PNG",
+    "img_2/newlineAtEndOfFile.PNG","img_2/unusedImports.PNG","img_2/innerAssignment.PNG",
+    "img_2/hiddenField.PNG","img_2/multipleVariableDeclarations.PNG","img_2/interfactIsType.PNG","img_2/emptyStatement.PNG"];
 
     var margins = { left:20, right:70, top:80, bottom:150};
 
@@ -223,7 +223,7 @@ function draw(ID)
         .text("Count");
     
     
-    d3.csv("data/test.csv").then(function(data){
+    d3.csv("data/brickbreaker.csv").then(function(data){
       
       const imageString = 
       ["img/emptyStatement.PNG", "img/interfactIsType.PNG","img/multipleVariableDeclarations.PNG", 
