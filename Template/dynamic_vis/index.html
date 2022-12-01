@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="description" content="">
-    <title>CS399 - Project 7</title>
+    <title>CS399 - Code Smell</title>
     <!-- Bootstrap -->
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <!-- Custom styling -->
@@ -18,14 +18,22 @@
         </div>
     </nav>
         
-    
+    <button onClick="UpdatePieChart(dataContainer)">
+        <img id = "pie_logo" src="img/pie_logo.png">
+        <br>Pie</button>
+    <button onClick="UpdateBarGraph(dataContainer)">
+        <img id = "bar_logo" src="img/bar_logo.png">
+        <br>Bar</button>
 
     <!-- Bootstrap grid setup -->
     <div class="container">
         <div class="row">
             <div id="chart-area"></div>
+            <div id="pie-area"></div>
             <div id="tooltip"></div>
             <div id="image_tooltip"></div>
+            <div id="div_template"></div>
+            <div id="image_template"></div>
         </div>
         
     </div>
