@@ -40,7 +40,16 @@ g.append("text")
 
 
 d3.csv("data/test.csv").then(function(data){
-    data.forEach(function(d){
+  
+  const imageString = 
+  ["img/emptyStatement.PNG", "img/interfactIsType.PNG","img/multipleVariableDeclarations.PNG", 
+  "img/hiddenField.PNG","img/innerAssignment.PNG","img/unusedImports.PNG","img/newlineAtEndOfFile.PNG",
+  "img/typeName.PNG","img/rightCurly_and_leftCurly.PNG","img/avoidStarImport.PNG","img/lineLength.PNG",
+  "img/visibilityModifier.PNG","img/whitespaceAround.PNG", "img/finalParameters.PNG", "img/whitespaceAround_and_whitespaceAround.PNG",
+  "img/magicNumber.PNG"
+  ];  
+
+  data.forEach(function(d){
         d.Count = +d.Count;
     });
 
@@ -77,8 +86,6 @@ d3.csv("data/test.csv").then(function(data){
     var myColor = d3.scaleSequential()
         .interpolator(d3.interpolateViridis)
         .domain([-15, 100])
-    
-    //var image = document.getElementById("image").src;
 
     var Tooltip = d3.select("#div_template")
         .append("div")
@@ -98,7 +105,7 @@ d3.csv("data/test.csv").then(function(data){
         .style("border", "solid")
         .style("border-width", "2px")
         .style("border-radius", "5px")
-        .style("padding", "5px")
+        .style("padding", "3px")
     
     var mouseover = function(d) {
         Tooltip
@@ -114,13 +121,14 @@ d3.csv("data/test.csv").then(function(data){
           .style("opacity", 1)
       }
 
-      var mousemove = function(d) {
+      var mousemove = function(d ,i) {
+        console.log(i);
         Tooltip
           .html("Count: " + d.Count)
           .style("left", (d3.mouse(this)[0] + 75) + "px")
           .style("top", (d3.mouse(this)[1]) + "px")
         
-          var string = "<img src= img/avoidStarImport.PNG />";
+          var string = "<img src= "+ imageString[i] +" />";
           imageTooltip
           .html(string)
           .style("left", 100 + "px")
